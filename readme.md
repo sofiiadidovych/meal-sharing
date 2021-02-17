@@ -15,7 +15,7 @@
 ---
 
 <p align="center"> Website api for sharing meals together. Invite your best friends or your family for dinner!
-    <br> 
+    <br>
 </p>
 
 ## 📝 Table of Contents
@@ -32,7 +32,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Link to deployed website: 
+Link to deployed website:
 
 This project will be built out over 3 different classes:
 
