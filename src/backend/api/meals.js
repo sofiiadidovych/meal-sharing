@@ -5,16 +5,21 @@ const knex = require("../database");
 
 router.get("/", async (request, response) => {
   try {
-    const availableReservations = request.query.availableReservations == 'true';
-    if (availableReservations) {
-      const mealsWithAvailableReservation = await knex
-        .from("meals")
-        .select('title', 'max_reservations')
-        .sum('number_of_guests')
-        .leftJoin('reservations', { 'reservations.meal_id': 'meals.idmeals' })
-        .groupBy('meals.idmeals')
-        .havingRaw('max_reservations > SUM(IFNULL(reservations.number_of_guests, 0))');
-      response.send(mealsWithAvailableReservation);
+    let availableReservations = request.query.availableReservations;
+    if (availableReservations != undefined) {
+      if (availableReservations == 'true' || availableReservations == 'false') {
+        const reservationSign = availableReservations == 'true' ? '>' : '<=';
+        const filteredMeals = await knex
+          .from("meals")
+          .select('title', 'max_reservations')
+          .sum('number_of_guests')
+          .leftJoin('reservations', { 'reservations.meal_id': 'meals.idmeals' })
+          .groupBy('meals.idmeals')
+          .havingRaw(`max_reservations ${reservationSign} SUM(IFNULL(reservations.number_of_guests, 0))`);
+        response.send(filteredMeals);
+      } else {
+        response.status(400).send("Bad request");
+      }
     } else {
       // filtered by price, title, createdAfter
       const maxPrice = request.query.maxPrice != undefined
