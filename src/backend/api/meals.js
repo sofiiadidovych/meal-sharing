@@ -5,32 +5,38 @@ const knex = require("../database");
 
 router.get("/", async (request, response) => {
   try {
-    // all meals
-    const meals = await knex("meals")
-    response.send(meals);
+    const availableReservations = request.query.availableReservations == 'true';
+    if (availableReservations) {
+      const mealsWithAvailableReservation = await knex
+        .from("meals")
+        .select('title', 'max_reservations')
+        .sum('number_of_guests')
+        .leftJoin('reservations', { 'reservations.meal_id': 'meals.idmeals' })
+        .groupBy('meals.idmeals')
+        .havingRaw('max_reservations > SUM(IFNULL(reservations.number_of_guests, 0))');
+      response.send(mealsWithAvailableReservation);
+    } else {
+      // filtered by price, title, createdAfter
+      const maxPrice = request.query.maxPrice != undefined
+        ? request.query.maxPrice
+        : Number.MAX_SAFE_INTEGER;
+      const title = request.query.title != undefined
+        ? request.query.title
+        : '';
+      const createdAfter = request.query.createdAfter != undefined
+        ? new Date(request.query.createdAfter)
+        : new Date(1980, 1, 1);
+      const limit = request.query.limit != undefined
+        ? parseInt(request.query.limit)
+        : Number.MAX_SAFE_INTEGER;
 
-    // filtered by price, title, createdAfter
-    const maxPrice = request.query.maxPrice != undefined ? request.query.maxPrice : 999999999999;
-    const title = request.query.title != undefined ? request.query.title : '';
-    const createdAfter = new Date(request.query.createdAfter);
-    //const availableReservations = request.query.availableReservations ? true : false
-
-    const filteredMeals = await knex("meals")
-      .where('price', '<=', maxPrice)
-      .where('title', 'like', `%${title}%`)
-      .where('created_date', '>', createdAfter)
+      const filteredMeals = await knex("meals")
+        .where('price', '<=', maxPrice)
+        .where('title', 'like', `%${title}%`)
+        .where('created_date', '>', createdAfter)
+        .limit(limit);
       response.send(filteredMeals);
-
-    // const mealsWithAvailableReservation = await knex("meals")
-    //   leftJoin('reservations', {'meal_id' : 'meal.idmeals'})
-    //   .select()
-    //   .where('number_of_guests', '<', 'max_reservations')
-    //   response.send(mealsWithAvailableReservation)
-    // by limit
-    const limit = parseInt(request.query.limit)
-    const limitedMeals = await knex("meals").limit(limit)
-    response.send(limitedMeals)
-
+    }
   } catch (error) {
     throw error;
   }
@@ -61,19 +67,19 @@ router.put("/:id", async (request, response) => {
   try {
     await knex("meals")
       .where({ idmeals: parseInt(request.params.id) })
-      .update({ title: request.body.title, number_of_guests: request.body.number_of_guests });
+      .update({ title: request.body.title, price: request.body.price });
     response.status(202).json('Success');
   } catch (error) {
     throw error;
   }
-})
+});
 
 router.delete("/:id", async (request, response) => {
   try {
     await knex("meals")
-      .where({ idmeals : parseInt(request.params.id) })
+      .where({ idmeals: parseInt(request.params.id) })
       .delete()
-      response.json('Deleted')
+    response.status(202).json('Deleted')
   } catch (error) {
     throw error;
   }

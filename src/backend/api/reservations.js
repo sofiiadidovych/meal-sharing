@@ -52,7 +52,7 @@ router.delete("/:id", async (request, response) => {
         await knex("reservations")
             .where({ id: parseInt(request.params.id) })
             .delete()
-        response.json("Deleted")
+        response.status(202).json("Deleted")
     } catch (error) {
         throw error;
     }
