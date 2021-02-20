@@ -72,7 +72,7 @@ router.put("/:id", async (request, response) => {
   try {
     await knex("meals")
       .where({ idmeals: parseInt(request.params.id) })
-      .update({ title: request.body.title, price: request.body.price });
+      .update(request.body);
     response.status(202).json('Success');
   } catch (error) {
     throw error;
