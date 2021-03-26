@@ -5,14 +5,15 @@ import PageStructure from "./PageStructure";
 
 function MealWithId({ meals }) {
   const [guests, setGuests] = useState(1);
-
   const params = useParams();
   console.log(params.id);
   const meal = meals.find((meal) => meal.idmeals === Number(params.id));
 
   const addReservation = () => {
     const currentDate = new Date();
-    const currentDateStr = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
+    const currentDateStr = `${currentDate.getFullYear()}-${
+      currentDate.getMonth() + 1
+    }-${currentDate.getDate()}`;
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,26 +38,28 @@ function MealWithId({ meals }) {
           <div>
             {meal.title} - {meal.price}
             <p>Maximum reservation capacity: {meal.max_reservations}</p>
+            <form>
+              <section className="reservation">
+                <p>Make a reservation</p>
+                <label htmlFor="reservation">For number of guests: </label>
+                <input
+                  type="number"
+                  min="1"
+                  max={meal.max_reservations}
+                  id="reservation"
+                  placeholder="number of guests"
+                  value={guests}
+                  onChange={(event) => {
+                    const value = event.target.value;
+                    setGuests(value);
+                  }}
+                ></input>
+                <button onClick={addReservation}>Add</button>
+              </section>
+            </form>
           </div>
         )}
-        <form>
-          <section className="reservation">
-            <p>Make a reservation</p>
-            <label htmlFor="reservation">For number of guests: </label>
-            <input
-              type="number"
-              min="1"
-              id="reservation"
-              placeholder="number of guests"
-              value={guests}
-              onChange={(event) => {
-                const value = event.target.value;
-                setGuests(value);
-              }}
-            ></input>
-            <button onClick={addReservation}>Add</button>
-          </section>
-        </form>
+
         <Link to="/meals">Go back</Link>
       </div>
     </PageStructure>
