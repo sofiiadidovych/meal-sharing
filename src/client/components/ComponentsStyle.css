@@ -1,14 +1,35 @@
+body {
+  padding-top: 5vh;
+}
+
+.title {
+  color: #5680e9;
+}
+
 section.home {
   color: #8860d0;
 }
 
 section.home-meals {
-  border: 1 px solid black;
+  color: #5ab9ea;
 }
 
-.header-footer {
+section.reservation {
+  color:purple;
+}
+
+.header, .footer {
   display: flex;
   width: 100%;
-  height: 10vh;
+  position: fixed;
   background-color: #84ceeb;
+  color: white;
+}
+
+.header {
+  top: 0;
+}
+
+.footer {
+  bottom: 0;
 }

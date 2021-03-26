@@ -8,7 +8,6 @@ const MEALS_API = "http://localhost:3000/api/meals";
 
 function Home({ meals }) {
   return (
-    <>
       <PageStructure>
         <PageTitle />
         <section className="home">
@@ -24,7 +23,6 @@ function Home({ meals }) {
         </section>
         <Link to="/meals">Edit meals</Link>
       </PageStructure>
-    </>
   );
 }
 
