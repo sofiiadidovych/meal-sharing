@@ -1,6 +1,5 @@
-body {
-  padding-top: 5vh;
-  padding-bottom: 10vh;
+section.content {
+  padding: 10vh 10vw;
 }
 
 .title {
@@ -12,15 +11,15 @@ section.home {
 }
 
 section.home-meals {
-  color: #5ab9ea;
+  color: #5680e9;
 }
 
 section.reservation {
-  color:purple;
+  color: purple;
 }
 
-.header, .footer {
-  display: flex;
+.header,
+.footer {
   width: 100%;
   position: fixed;
   background-color: #84ceeb;
