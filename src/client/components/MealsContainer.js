@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./ComponentsStyle.css";
 import PageTitle from "./PageTitle";
 import PageStructure from "./PageStructure";
+import { getCurrentDate } from "./MealWithId";
 
 function MealsContainer({ meals }) {
   const [title, setTitle] = useState("");
@@ -15,11 +16,6 @@ function MealsContainer({ meals }) {
       return;
     }
 
-    const currentDate = new Date();
-    const currentDateStr = `${currentDate.getFullYear()}-${
-      currentDate.getMonth() + 1
-    }-${currentDate.getDate()}`;
-
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -27,7 +23,7 @@ function MealsContainer({ meals }) {
         title: title,
         max_reservations: capacity,
         price: price,
-        created_date: currentDateStr,
+        created_date: getCurrentDate(),
       }),
     };
 
@@ -95,9 +91,7 @@ function MealsContainer({ meals }) {
         <br />
         <button>Submit</button>
       </form>
-      <div>
-        <Link to="/">Go back home</Link>
-      </div>
+      <Link to="/">Go back home</Link>
     </PageStructure>
   );
 }

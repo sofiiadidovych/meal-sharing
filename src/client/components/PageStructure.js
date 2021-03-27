@@ -6,11 +6,11 @@ function PageStructure(props) {
   return (
     <>
       <header className="header">
-        <h1>My App</h1>
+        <h1>Meal-sharing</h1>
       </header>
       <section className="content">{props.children}</section>
       <footer className="footer">
-        <img src={logo} alt="logo" width="100vh" />
+        <img src={logo} alt="logo" />
       </footer>
     </>
   );

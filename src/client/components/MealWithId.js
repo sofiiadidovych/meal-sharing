@@ -3,24 +3,24 @@ import { useParams, Link } from "react-router-dom";
 import "./ComponentsStyle.css";
 import PageStructure from "./PageStructure";
 
+export function getCurrentDate() {
+  const currentDate = new Date();
+  return `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
+};
+
 function MealWithId({ meals }) {
   const [guests, setGuests] = useState(1);
   const params = useParams();
-  console.log(params.id);
   const meal = meals.find((meal) => meal.idmeals === Number(params.id));
 
   const addReservation = () => {
-    const currentDate = new Date();
-    const currentDateStr = `${currentDate.getFullYear()}-${
-      currentDate.getMonth() + 1
-    }-${currentDate.getDate()}`;
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         meal_id: meal.idmeals,
         number_of_guests: guests,
-        created_date: currentDateStr,
+        created_date: getCurrentDate(),
       }),
     };
 
@@ -31,7 +31,6 @@ function MealWithId({ meals }) {
 
   return (
     <PageStructure>
-      <div>
         {!meal ? (
           <div>Not found</div>
         ) : (
@@ -47,7 +46,6 @@ function MealWithId({ meals }) {
                   min="1"
                   max={meal.max_reservations}
                   id="reservation"
-                  placeholder="number of guests"
                   value={guests}
                   onChange={(event) => {
                     const value = event.target.value;
@@ -59,9 +57,7 @@ function MealWithId({ meals }) {
             </form>
           </div>
         )}
-
         <Link to="/meals">Go back</Link>
-      </div>
     </PageStructure>
   );
 }

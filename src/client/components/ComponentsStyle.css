@@ -20,6 +20,7 @@ section.reservation {
 
 .header,
 .footer {
+  height: 10vh;
   width: 100%;
   position: fixed;
   background-color: #84ceeb;
@@ -32,4 +33,8 @@ section.reservation {
 
 .footer {
   bottom: 0;
+}
+
+.footer img {
+  height: 100%;
 }

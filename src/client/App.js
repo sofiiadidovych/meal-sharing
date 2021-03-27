@@ -15,8 +15,6 @@ function App() {
       .then((fetchedMeals) => setMeals(fetchedMeals));
   }, []);
 
-  console.log(meals);
-
   return (
     <Router>
       <Route exact path="/">
@@ -25,7 +23,7 @@ function App() {
       <Route exact path="/meals">
         <MealsContainer meals={meals} />
       </Route>
-      <Route path="/meals/:id">
+      <Route exact path="/meals/:id">
         <MealWithId meals={meals} />
       </Route>
     </Router>

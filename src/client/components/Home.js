@@ -4,25 +4,23 @@ import "./ComponentsStyle.css";
 import PageTitle from "./PageTitle";
 import PageStructure from "./PageStructure";
 
-const MEALS_API = "http://localhost:3000/api/meals";
-
 function Home({ meals }) {
   return (
-      <PageStructure>
-        <PageTitle />
-        <section className="home">
-          <ul>
-            {meals.map((meal) => (
-              <li key={meal.idmeals}>
-                <h4>
-                  {meal.title} - {meal.price} DKK
-                </h4>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <Link to="/meals">Edit meals</Link>
-      </PageStructure>
+    <PageStructure>
+      <PageTitle />
+      <section className="home">
+        <ul>
+          {meals.map((meal) => (
+            <li key={meal.idmeals}>
+              <h4>
+                {meal.title} - {meal.price} DKK
+              </h4>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <Link to="/meals">Edit meals</Link>
+    </PageStructure>
   );
 }
 
