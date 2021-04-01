@@ -6,31 +6,49 @@ import PageTitle from "./PageTitle";
 import PageStructure from "./PageStructure";
 import { getCurrentDate } from "./MealWithId";
 
-function MealsContainer({ meals }) {
+function MealsContainer({ meals, addMeal }) {
   const [title, setTitle] = useState("");
   const [capacity, setCapacity] = useState(1);
   const [price, setPrice] = useState(0);
 
-  const createMeal = () => {
+  const createMeal = (event) => {
+    event.preventDefault();
+    if (title === "") {
+      alert("Please add a meal title");
+      return;
+    }
+    if (title === "") {
+      alert("Please add a meal title");
+      return;
+    }
     if (title === "") {
       alert("Please add a meal title");
       return;
     }
 
+    const meal = {
+      title: title,
+      number_of_guests: capacity,
+      price: price,
+      created_date: getCurrentDate(),
+    };
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        title: title,
-        max_reservations: capacity,
-        price: price,
-        created_date: getCurrentDate(),
-      }),
+      body: JSON.stringify(meal),
     };
 
     fetch("http://localhost:3000/api/meals/", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data, "meals data"));
+      .then((mealId) => {
+        meal.id = mealId;
+        addMeal(meal);
+      });
+
+    setTitle("");
+    setCapacity(1);
+    setPrice(0);
   };
 
   return (
@@ -40,11 +58,11 @@ function MealsContainer({ meals }) {
         <ul>
           {meals.map((meal) => {
             return (
-              <li key={meal.idmeals}>
+              <li key={meal.id}>
                 <h4>
                   {meal.title} - {meal.price} DKK
                 </h4>
-                <Link className="link" to={`/meals/${meal.idmeals}`}>
+                <Link className="link" to={`/meals/${meal.id}`}>
                   Details
                 </Link>
               </li>
@@ -93,7 +111,7 @@ function MealsContainer({ meals }) {
               }}
             ></input>
             <br />
-            <button>Submit</button>
+            <button>Create</button>
           </form>
         </section>
       </section>

@@ -11,7 +11,7 @@ function Home({ meals }) {
       <section className="home">
         <ul>
           {meals.map((meal) =>
-            <MealItem key={meal.idmeals} title={meal.title}></MealItem>
+            <MealItem key={meal.id} title={meal.title}></MealItem>
           )}
         </ul>
       </section>

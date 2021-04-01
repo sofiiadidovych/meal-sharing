@@ -18,13 +18,17 @@ function App() {
       .finally(() => setIsLoading(false));
   }, []);
 
+  const addMeal = (meal) => {
+    setMeals([...meals, meal])
+  }
+
   return (
     <Router>
       <Route exact path="/">
         <Home meals={meals}/>
       </Route>
       <Route exact path="/meals">
-        <MealsContainer meals={meals} />
+        <MealsContainer meals={meals} addMeal={addMeal}/>
       </Route>
       <Route exact path="/meals/:id">
         <MealWithId meals={meals} />
