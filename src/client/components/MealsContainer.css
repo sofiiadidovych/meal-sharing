@@ -1,0 +1,29 @@
+.home-meals {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.home-meals ul {
+    flex: 1 0 45%;
+}
+
+section.home-meals li {
+  flex: 1 0 25%;
+  margin: 1%;
+}
+
+section.home-meals h4 {
+  font-family: cursive;
+  color: black;
+  text-align: center;
+}
+
+.link {
+    border-radius: 5%;
+    background-color: #fccd04;
+    padding: 6%;
+}
+
+.create_meal_form {
+    flex: 0 1 45%;
+}

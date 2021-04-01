@@ -8,11 +8,14 @@ const MEALS_API = "http://localhost:3000/api/meals";
 
 function App() {
   const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(MEALS_API)
       .then((response) => response.json())
-      .then((fetchedMeals) => setMeals(fetchedMeals));
+      .then((fetchedMeals) => setMeals(fetchedMeals))
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (

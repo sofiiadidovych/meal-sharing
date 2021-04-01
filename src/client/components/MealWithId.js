@@ -10,6 +10,7 @@ export function getCurrentDate() {
 
 function MealWithId({ meals }) {
   const [guests, setGuests] = useState(1);
+  const [name, setName] = useState('');
   const params = useParams();
   const meal = meals.find((meal) => meal.idmeals === Number(params.id));
 
@@ -37,9 +38,11 @@ function MealWithId({ meals }) {
           <div>
             {meal.title} - {meal.price}
             <p>Maximum reservation capacity: {meal.max_reservations}</p>
-            <form>
+            <form onSubmit={addReservation}>
               <section className="reservation">
                 <p>Make a reservation</p>
+                <label htmlFor="name">Name</label>
+                <input id="name" type="text" placeholder="Name" value={name} onChange={(event) => {setName(event.target.value)}} />
                 <label htmlFor="reservation">For number of guests: </label>
                 <input
                   type="number"
@@ -52,7 +55,7 @@ function MealWithId({ meals }) {
                     setGuests(value);
                   }}
                 ></input>
-                <button onClick={addReservation}>Add</button>
+                <button>Add</button>
               </section>
             </form>
           </div>

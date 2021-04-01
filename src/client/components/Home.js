@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./ComponentsStyle.css";
 import PageTitle from "./PageTitle";
 import PageStructure from "./PageStructure";
+import MealItem from "./MealItem";
 
 function Home({ meals }) {
   return (
@@ -10,16 +10,11 @@ function Home({ meals }) {
       <PageTitle />
       <section className="home">
         <ul>
-          {meals.map((meal) => (
-            <li key={meal.idmeals}>
-              <h4>
-                {meal.title} - {meal.price} DKK
-              </h4>
-            </li>
-          ))}
+          {meals.map((meal) =>
+            <MealItem key={meal.idmeals} title={meal.title}></MealItem>
+          )}
         </ul>
       </section>
-      <Link to="/meals">Edit meals</Link>
     </PageStructure>
   );
 }
