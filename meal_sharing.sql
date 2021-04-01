@@ -56,7 +56,7 @@ CREATE TABLE `reviews` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `meal_id` int(11) NOT NULL,
   `title` varchar(100) DEFAULT NULL,
-  `starts` int(11) DEFAULT NULL,
+  `stars` int(11) DEFAULT NULL,
   `created_date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `meal_id` (`meal_id`),

@@ -37,9 +37,12 @@ router.put("/:id", async (request, response) => {
         await knex("reservations")
             .where({ id: parseInt(request.params.id) })
             .update({
-                number_of_guests: request.body.number_of_guests,
                 meal_id: request.body.meal_id,
-                created_date: request.body.created_date
+                created_date: request.body.created_date,
+                guests: request.body.guests,
+                phone_number: request.body.phone_number,
+                name: request.body.name,
+                email: request.body.email
             });
         response.status(202).json('Success');
     } catch (error) {
