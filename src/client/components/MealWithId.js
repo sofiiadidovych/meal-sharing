@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./ComponentsStyle.css";
+import "./MealWithId.css";
 import PageStructure from "./PageStructure";
 
 export function getCurrentDate() {
@@ -27,20 +28,16 @@ function MealWithId({ meals }) {
 
   const addReservation = (event) => {
     event.preventDefault();
-    if (guests > availableReservations) {
-      alert("Sorry...");
+    if (name === "") {
+      alert("Please tell us your name");
       return;
     }
-    if (guests > availableReservations) {
-      alert("Sorry...");
+    if (phoneNumber === "") {
+      alert("Please tell us your phone number");
       return;
     }
-    if (guests > availableReservations) {
-      alert("Sorry...");
-      return;
-    }
-    if (guests > availableReservations) {
-      alert("Sorry...");
+    if (email === "") {
+      alert("Please tell us your email");
       return;
     }
     const reservation = {
@@ -70,12 +67,12 @@ function MealWithId({ meals }) {
       {!meal ? (
         <div>Not found</div>
       ) : (
-        <div>
-          {meal.title} - {meal.price}
+        <div className="reservation">
+          <p>{meal.title} - {meal.price}</p>
           <p>Maximum reservation capacity: {meal.number_of_guests}</p>
           <p>Available: {availableReservations}</p>
           <form onSubmit={addReservation}>
-            <section className="reservation">
+            <section className="reservation_form">
               <p>Make a reservation</p>
               <label htmlFor="name">Name</label>
               <input
@@ -117,7 +114,7 @@ function MealWithId({ meals }) {
           </form>
         </div>
       )}
-      <Link to="/meals">Go back</Link>
+      <Link className="back_links" to="/meals">Go back</Link>
     </PageStructure>
   );
 }

@@ -16,12 +16,6 @@ function PageStructure(props) {
             <li>
               <Link to="/meals">Meals</Link>
             </li>
-            <li>
-              <Link to="/">Create your meal</Link>
-            </li>
-            <li>
-              <Link to="/">Make a reservation</Link>
-            </li>
           </ul>
         </nav>
       </header>

@@ -17,12 +17,12 @@ function MealsContainer({ meals, addMeal }) {
       alert("Please add a meal title");
       return;
     }
-    if (title === "") {
-      alert("Please add a meal title");
+    if (!capacity) {
+      alert("Please add number of guests");
       return;
     }
-    if (title === "") {
-      alert("Please add a meal title");
+    if (Number(price) === 0) {
+      alert("Please add a meal price");
       return;
     }
 
@@ -59,9 +59,10 @@ function MealsContainer({ meals, addMeal }) {
           {meals.map((meal) => {
             return (
               <li key={meal.id}>
-                <h4>
+                <h2>
                   {meal.title} - {meal.price} DKK
-                </h4>
+                </h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <Link className="link" to={`/meals/${meal.id}`}>
                   Details
                 </Link>
@@ -115,7 +116,7 @@ function MealsContainer({ meals, addMeal }) {
           </form>
         </section>
       </section>
-      <Link to="/">Go back home</Link>
+      <Link className="back_links" to="/">Go back home</Link>
     </PageStructure>
   );
 }

@@ -1,5 +1,5 @@
 section.content {
-  padding: 12vh 10vw;
+  padding: 14vh 10vw;
 }
 
 .header,
@@ -19,13 +19,14 @@ section.content {
 }
 
 nav {
-  width: 60%;
+  width: 40%;
   padding-top: 3%;
 }
 
 nav li {
   display: inline;
   padding: 3%;
+  margin-right: 25%;
   font-size: 19px;
 }
 
@@ -71,11 +72,21 @@ section.home h3 {
 }
 
 section.home-meals {
-  color: #5680e9;
+  color: #a64ac9;
 }
 
 section.reservation {
   color: purple;
+}
+
+.back_links {
+  font-family: 'Parisienne', cursive;
+  font-size: 35px;
+  margin: 3%;
+  padding: 1%;
+  color: white;
+  background-color: #ffb48f;
+  border-radius: 8px;
 }
 
 .footer {
