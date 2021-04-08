@@ -19,7 +19,7 @@ section.content {
 }
 
 nav {
-  width: 40%;
+  width: 50%;
   padding-top: 3%;
 }
 
@@ -32,6 +32,11 @@ nav li {
 
 header a {
   color:wheat;
+}
+
+header a:hover {
+  color: white;
+  font-weight: bold;
 }
 
 h1 {
@@ -94,6 +99,8 @@ section.reservation {
 }
 footer p {
   padding: 1%;
+  font-family: 'Parisienne', cursive;
+  font-size: 27px;
 }
 
 .footer img {

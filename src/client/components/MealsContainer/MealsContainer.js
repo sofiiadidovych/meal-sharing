@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./ComponentsStyle.css";
+import "../ComponentsStyle.css";
 import "./MealsContainer.css";
-import PageTitle from "./PageTitle";
-import PageStructure from "./PageStructure";
-import { getCurrentDate } from "./MealWithId";
+import PageTitle from "../PageTitle";
+import PageStructure from "../PageStructure";
+import { getCurrentDate } from "../MealWithId/MealWithId";
 
 function MealsContainer({ meals, addMeal }) {
   const [title, setTitle] = useState("");
@@ -54,6 +54,11 @@ function MealsContainer({ meals, addMeal }) {
   return (
     <PageStructure>
       <PageTitle />
+      <section className="search-bar">
+        <input
+        placeholder="Search"
+        ></input>
+      </section>
       <section className="home-meals">
         <ul>
           {meals.map((meal) => {

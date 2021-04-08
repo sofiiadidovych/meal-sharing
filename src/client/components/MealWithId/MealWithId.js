@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import "./ComponentsStyle.css";
+import "../ComponentsStyle.css";
 import "./MealWithId.css";
-import PageStructure from "./PageStructure";
+import PageStructure from "../PageStructure";
 
 export function getCurrentDate() {
   const currentDate = new Date();

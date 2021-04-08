@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home";
-import MealsContainer from "./components/MealsContainer";
-import MealWithId from "./components/MealWithId";
+import MealsContainer from "./components/MealsContainer/MealsContainer";
+import MealWithId from "./components/MealWithId/MealWithId";
 
 const MEALS_API = "http://localhost:3000/api/meals";
 

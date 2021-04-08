@@ -32,3 +32,16 @@ section.home-meals li {
     height: 60vh;
     background-color: #f5e6cc;
 }
+
+.create_meal_form input {
+    padding: 2%;
+    margin-top: 1.5%;
+}
+
+
+
+
+.search-bar input{
+    margin: auto;
+}
+
