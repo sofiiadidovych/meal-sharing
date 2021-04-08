@@ -1,0 +1,108 @@
+section.content {
+  padding: 14vh 10vw;
+}
+
+.header,
+.footer {
+  height: 12vh;
+  width: 100%;
+  position: fixed;
+  background-color: #a64ac9;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header {
+  top: 0;
+}
+
+nav {
+  width: 50%;
+  padding-top: 3%;
+}
+
+nav li {
+  display: inline;
+  padding: 3%;
+  margin-right: 25%;
+  font-size: 19px;
+}
+
+header a {
+  color:wheat;
+}
+
+header a:hover {
+  color: white;
+  font-weight: bold;
+}
+
+h1 {
+  padding-left: 1%;
+  font-family: 'Parisienne', cursive;
+  font-size: 40px;
+}
+
+.title {
+  color: #a64ac9;
+  text-align: center;
+}
+
+section.home ul {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+section.home h3 {
+  font-size: 32px;
+  font-family: 'Parisienne', cursive;
+  color: #ffb48f;
+  text-align: center;
+}
+
+.meal-box {
+  flex: 1 0 40%;
+  margin: 2%;
+  border-radius: 5%;
+  background-color: #f5e6cc;
+}
+
+#meal_img {
+  width: 100%;
+  border-radius: 0 0 5% 5%;
+  display: block;
+}
+
+section.home-meals {
+  color: #a64ac9;
+}
+
+section.reservation {
+  color: purple;
+}
+
+.back_links {
+  font-family: 'Parisienne', cursive;
+  font-size: 35px;
+  margin: 3%;
+  padding: 1%;
+  color: white;
+  background-color: #ffb48f;
+  border-radius: 8px;
+}
+
+.footer {
+  bottom: 0;
+}
+footer p {
+  padding: 1%;
+  font-family: 'Parisienne', cursive;
+  font-size: 27px;
+}
+
+.footer img {
+  height: 100%;
+}

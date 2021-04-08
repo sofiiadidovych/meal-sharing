@@ -1,0 +1,47 @@
+.home-meals {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.home-meals ul {
+    flex: 1 0 45%;
+}
+
+section.home-meals h4 {
+    font-family: cursive;
+    display: inline;
+}
+
+section.home-meals li {
+  padding: 6%;
+  margin: 4%;
+  background-color: #f5e6cc;
+}
+
+.link {
+    color: white;
+    border-radius: 8px;
+    background-color: #fccd04;
+    padding: 1.5%;
+}
+
+.create_meal_form {
+    flex: 0 1 35%;
+    padding: 5%;
+    margin-top: 2.5%;
+    height: 60vh;
+    background-color: #f5e6cc;
+}
+
+.create_meal_form input {
+    padding: 2%;
+    margin-top: 1.5%;
+}
+
+
+
+
+.search-bar input{
+    margin: auto;
+}
+

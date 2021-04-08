@@ -39,6 +39,7 @@ router.put("/:id", async (request, response) => {
             .update({
                 title: request.body.title,
                 meal_id: request.body.meal_id,
+                stars: request.body.stars,
                 created_date: request.body.created_date
             });
         response.status(202).json('Success');
