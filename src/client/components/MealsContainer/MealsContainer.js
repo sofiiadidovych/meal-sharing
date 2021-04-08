@@ -39,7 +39,7 @@ function MealsContainer({ meals, addMeal }) {
       body: JSON.stringify(meal),
     };
 
-    fetch("http://localhost:3000/api/meals/", requestOptions)
+    fetch("/api/meals/", requestOptions)
       .then((response) => response.json())
       .then((mealId) => {
         meal.id = mealId;

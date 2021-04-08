@@ -21,7 +21,7 @@ function MealWithId({ meals }) {
   const meal = meals.find((meal) => meal.id === Number(params.id));
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/meals/availableReservations/${Number(params.id)}`)
+    fetch(`/api/meals/availableReservations/${Number(params.id)}`)
       .then((response) => response.json())
       .then((data) => setAvailableReservations(Number(data.availableReservations)));
   }, []);
@@ -54,7 +54,7 @@ function MealWithId({ meals }) {
       body: JSON.stringify(reservation),
     };
 
-    fetch("http://localhost:3000/api/reservations/", requestOptions);
+    fetch("/api/reservations/", requestOptions);
     setGuests(1);
     setName("");
     setPhoneNumber("");

@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import MealsContainer from "./components/MealsContainer/MealsContainer";
 import MealWithId from "./components/MealWithId/MealWithId";
 
-const MEALS_API = "http://localhost:3000/api/meals";
+const MEALS_API = "/api/meals";
 
 function App() {
   const [meals, setMeals] = useState([]);
