@@ -54,11 +54,6 @@ function MealsContainer({ meals, addMeal }) {
   return (
     <PageStructure>
       <PageTitle />
-      <section className="search-bar">
-        <input
-        placeholder="Search"
-        ></input>
-      </section>
       <section className="home-meals">
         <ul>
           {meals.map((meal) => {
